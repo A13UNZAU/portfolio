@@ -1,13 +1,13 @@
 
 const app = document.querySelector("#app");
 const delay = ms => new Promise(res => setTimeout(res, ms));
-    
-    
+document.querySelector('.monkey').classList.add('monkey');
+
 app.addEventListener("keypress", async function(event){
   if(event.key === "Enter"){
     await delay(150);
    getInputValue();
-   
+
     removeInput();
     await delay(150);
     new_line();
@@ -21,13 +21,13 @@ app.addEventListener("click", function(event){
 
 
 async function open_terminal(){
-  createText("Welcome");
+  createText("Welcome, Karibu 😊");
   await delay(700);
-  createText("Starting the server...");
+  createText("Starting the server ■■■■■■■■■■■□□□ ");
   await delay(1500);
   createText("You can run several commands:");
- 
-  createCode("about me", "Who am i and what do i do.");
+
+  createCode("about me", "A short Intro to who am I and what I do.");
   createCode("all", "See all commands.");
   createCode("social -a", "All my social networks.");
 
@@ -37,14 +37,14 @@ async function open_terminal(){
 
 
 function new_line(){
-  
+
   const p = document.createElement("p");
   const span1 = document.createElement("span");
   const span2 = document.createElement("span");
   p.setAttribute("class", "path")
-  p.textContent = "# user";
+  p.textContent = "# guest";
   span1.textContent = " in";
-  span2.textContent = " ~/heber-leonard";
+  span2.textContent = " ~/abraham-nzau";
   p.appendChild(span1);
   p.appendChild(span2);
   app.appendChild(p);
@@ -57,7 +57,7 @@ function new_line(){
   div.appendChild(input);
   app.appendChild(div);
   input.focus();
-  
+
 }
 
 function removeInput(){
@@ -66,49 +66,77 @@ function removeInput(){
 }
 
 async function getInputValue(){
-  
+
   const value = document.querySelector("input").value;
   if(value === "all"){
     trueValue(value);
-    
-    createCode("projects", "My github page with my projects. Follow me there ;)");
-    createCode("about me", "Who am i and what do i do.");
-    createCode("social -a", "All my social networks.");
+
+    createCode("projects", "My github page with my projects. Follow me there 😊");
+    createCode("about me", "Who am I and what do I do.");
+    createCode("social -a", "My Social Networks.");
+    createCode("contact me", "How you can get in touch with me");
+    createCode("resume", "To get a copy of my Updated Resume.");
     createCode("clear", "Clean the terminal.");
-    
+    createCode("hello", "To see my pet Monkey, he guards the Site. He doesn't Bite :)");
+
   }
   else if(value === "projects"){
     trueValue(value);
-    createText("<a href='https://github.com/heberleonard2' target='_blank'><i class='fab fa-github white'></i> github.com/heberleonard2</a>")
+    createText("<a href='https://github.com/A13UNZAU' target='_blank'><i class='fab fa-github white'></i> github.com/A13UNZAU</a>")
   }
   else if(value === "about me"){
     trueValue(value);
-    createText("Oi, meu nome é Héber ;)")
-    createText("Desenvolvedor atualmente focado em todo o ecossistema Javascript. Utilizando principalmente a stack <span class='blue'>Node, React e React Native </span>por permitir criar aplicações de forma descomplicada e produtiva.")
+    createText("As a Tech Enthusiast, I often find myself asking, \"To what end is the pursuit of knowledge if not for the betterment of mankind.\" I'm a firm believer that all information and data the current technology has made available means nothing if it remains inaccessible to those who need it most.")
   }
   else if(value === "social -a"){
     trueValue(value);
-    createText("<a href='https://github.com/heberleonard2' target='_blank'><i class='fab fa-github white'></i> github.com/heberleonard2</a>")
-    createText("<a href='https://www.linkedin.com/in/heber-leonard/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/heber-leonard</a>")
-    createText("<a href='https://www.instagram.com/heber_leonard/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/heber_leonard</a>")
+    createText("<a href='https://github.com/A13UNZAU' target='_blank'><i class='fab fa-github white'></i> github.com/A13UNZAU</a>")
+    createText("<a href='https://www.linkedin.com/in/abraham-nzau-1a8554106/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/abraham-nzau</a>")
+    // createText("<a href='https://www.instagram.com/heber_leonard/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/heber_leonard</a>")
   }
   else if(value === "social"){
     trueValue(value);
     createText("Didn't you mean: social -a?")
   }
-  
+  else if(value === "about"){
+    trueValue(value);
+    createText("Didn't you mean: about me?")
+  }
+
+  else if(value === "contact me"){
+    trueValue(value);
+    createText("<i class='fa fa-envelope-open white'></i> Mail: abrahamnzau@gmail.com")
+    createText("<i class='fab fa-skype white'></i> Skype: abrahamnzau</a>")
+  }
+
+  else if(value === "resume"){
+    trueValue(value);
+    window.open("resume/resume.zip");
+  }
+
   else if(value === "clear"){
     document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
     document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
   }
+
+  else if(value === "hello"){
+    document.querySelector('.monkey').classList.add('show');
+    await delay(7000);
+    document.querySelector('.monkey').classList.remove('show');
+  }
+
   else{
     falseValue(value);
     createText(`command not found: ${value}`)
   }
 }
 
+function close_monkey(){
+  document.querySelector('.monkey').classList.add('monkey');
+}
+
 function trueValue(value){
-  
+
   const div = document.createElement("section");
   div.setAttribute("class", "type2")
   const i = document.createElement("i");
@@ -122,7 +150,7 @@ function trueValue(value){
 }
 
 function falseValue(value){
-  
+
   const div = document.createElement("section");
   div.setAttribute("class", "type2")
   const i = document.createElement("i");
@@ -137,7 +165,7 @@ function falseValue(value){
 
 function createText(text, classname){
   const p = document.createElement("p");
-  
+
   p.innerHTML =
   text
   ;
